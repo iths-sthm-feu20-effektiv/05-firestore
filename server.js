@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const path = require('path')
+const tools = require('./routes/tools.js')
 
 const PORT = 1339
 const staticFolder = path.join(__dirname, 'static')
@@ -24,6 +25,9 @@ app.use( express.static(staticFolder) )
 app.get('/', (req, res) => {
 	res.send('Firestore project')
 })
+
+// REST API for /tools
+app.use('/tools', tools)
 
 
 
