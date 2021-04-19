@@ -85,12 +85,18 @@ function isToolsObject(maybeObject) {
 	return true
 }
 
-
-
-
-
-
 // DELETE /tools/:id
+router.delete('/:id', async (req, res) => {
+	const id = req.params.id
+
+	if( !id ) {
+		res.sendStatus(400)
+		return
+	}
+
+	await db.collection('tools').doc(id).delete()
+	res.sendStatus(200)
+})
 
 
 module.exports = router
