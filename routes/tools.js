@@ -43,16 +43,27 @@ router.get('/:id', async (req, res) => {
 	res.send(data)
 })
 
-
-
-
-
-
-
-
-
-
 // POST /tools
+router.post('/', async (req, res) => {
+	// OBS! Måste installera express.json för att detta ska fungera
+	const object = req.body
+
+	if( !object || !object.name || !object.price ) {
+		res.sendStatus(400)
+		return
+	}
+
+	const docRef = await db.collection('tools').add(object)
+	res.send(docRef.id)
+})
+
+
+
+
+
+
+
+
 // PUT /tools/:id
 // DELETE /tools/:id
 
