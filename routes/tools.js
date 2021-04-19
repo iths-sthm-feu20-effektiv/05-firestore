@@ -30,6 +30,28 @@ router.get('/', async (req, res) => {
 })
 
 // GET /tools/:id
+router.get('/:id', async (req, res) => {
+	const id = req.params.id
+	const docRef = await db.collection('tools').doc(id).get()
+
+	if( !docRef.exists ) {
+		res.status(404).send('Tool does not exist')
+		return
+	}
+
+	const data = docRef.data()
+	res.send(data)
+})
+
+
+
+
+
+
+
+
+
+
 // POST /tools
 // PUT /tools/:id
 // DELETE /tools/:id

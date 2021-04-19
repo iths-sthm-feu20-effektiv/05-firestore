@@ -22,9 +22,6 @@ app.use( express.static(staticFolder) )
 
 
 // Routes
-app.get('/', (req, res) => {
-	res.send('Firestore project')
-})
 
 // REST API for /tools
 app.use('/tools', tools)
