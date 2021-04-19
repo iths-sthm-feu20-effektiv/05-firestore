@@ -63,7 +63,7 @@ router.put('/:id', async (req, res) => {
 	const object = req.body
 	const id = req.params.id
 
-	if( !isToolsObject(object) || !id ) {
+	if( !object || !id ) {
 		res.sendStatus(400)
 		return
 	}
