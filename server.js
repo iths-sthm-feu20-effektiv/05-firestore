@@ -4,7 +4,8 @@ const cors = require('cors')
 const path = require('path')
 const tools = require('./routes/tools.js')
 
-const PORT = 1339
+// Heroku uses process.env.PORT
+const PORT = process.env.PORT || 1339
 const staticFolder = path.join(__dirname, 'static')
 
 
@@ -16,7 +17,7 @@ app.use((req, res, next) => {
 })
 
 app.use( express.json() )
-app.use( cors() )
+app.use( cors() )   // Cross-Origin Resource Sharing
 app.use( express.static(staticFolder) )
 
 
